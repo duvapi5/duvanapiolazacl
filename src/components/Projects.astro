@@ -1,47 +1,4 @@
 ---
-interface Project {
-  name: string;
-  description: string;
-  image: string;
-  tags: string[];
-  status: 'production' | 'development' | 'private';
-  statusLabel: string;
-  link: string;
-  linkType: 'website' | 'instagram' | 'demo';
-}
-
-const mainProjects: Project[] = [
-  {
-    name: "Churrascas Las Delicias 101",
-    description: "Plataforma de pedidos online para negocio gastronómico local. Optimiza la toma de pedidos y centraliza ventas vía WhatsApp. En producción y uso activo.",
-    image: "https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop",
-    tags: ["Pedidos Online", "WhatsApp", "E-commerce"],
-    status: 'production',
-    statusLabel: 'Producción',
-    link: 'https://delicias101.cl',
-    linkType: 'website',
-  },
-  {
-    name: "GreenGuardian",
-    description: "Sistema de cultivo hidropónico automatizado para producción de alimentos frescos. Integra sensores, IA y automatización para controlar parámetros de cultivo en tiempo real.",
-    image: "https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop",
-    tags: ["Hidroponía", "IoT", "IA"],
-    status: 'production',
-    statusLabel: 'Proyecto académico',
-    link: 'https://instagram.com/greenguardiancl',
-    linkType: 'instagram',
-  },
-  {
-    name: "Gestión Fiscal",
-    description: "Plataforma SaaS para gestión y automatización de procesos tributarios. Disponible en entorno de demostración (staging) en demosapp.cl para validar flujos y experiencia de usuario antes del lanzamiento.",
-    image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop",
-    tags: ["SaaS", "Tributario", "Automatización"],
-    status: 'development',
-    statusLabel: 'Demo',
-    link: 'https://demosapp.cl',
-    linkType: 'demo',
-  },
-];
 ---
 
 <section id="proyectos" class="pt-20 pb-8 bg-slate-950 relative overflow-hidden">
@@ -53,13 +10,13 @@ const mainProjects: Project[] = [
   <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
     <div data-animate data-animation="fade-in-up" class="opacity-0">
       <div class="text-center mb-10 sm:mb-12">
-        <span class="inline-block px-3 py-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 rounded-full border border-emerald-500/20 mb-4 uppercase tracking-wider">
+        <span class="inline-block px-3 py-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 rounded-full border border-emerald-500/20 mb-4 uppercase tracking-wider" data-i18n="projects.badge">
           Portafolio
         </span>
         <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-          Proyectos <span class="text-emerald-400">reales</span>
+          <span data-i18n="projects.title">Proyectos</span> <span class="text-emerald-400" data-i18n="projects.titleHighlight">reales</span>
         </h2>
-        <p class="text-slate-400 max-w-xl mx-auto">
+        <p class="text-slate-400 max-w-xl mx-auto" data-i18n="projects.subtitle">
           Sistemas funcionando en producción, resolviendo problemas concretos.
         </p>
       </div>
@@ -72,79 +29,158 @@ const mainProjects: Project[] = [
           <div class="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50">
             <!-- Carousel container -->
             <div id="carousel-content" class="grid md:grid-cols-2 md:min-h-[320px] transition-all duration-300 ease-out">
-              {mainProjects.map((project, index) => (
-                <Fragment>
-                  {/* Each project slide - only first visible initially */}
-                  <div class={`carousel-slide col-span-2 grid md:grid-cols-2 ${index === 0 ? '' : 'hidden'}`} data-slide={index}>
-                    {/* Image */}
-                    <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
-                      <img 
-                        src={project.image}
-                        alt={project.name}
-                        class="w-full h-full object-cover transition-transform duration-700"
-                        loading={index === 0 ? "eager" : "lazy"}
-                      />
-                      <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
-                      <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
-                      <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                    
-                    {/* Content */}
-                    <div class="p-5 sm:p-6 md:p-8 flex flex-col">
-                      <div class="mb-2 sm:mb-3">
-                        <span class={`text-xs px-3 py-1 rounded-full border ${
-                          project.status === 'production'
-                            ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/30'
-                            : 'bg-amber-500/20 text-amber-400 border-amber-500/30'
-                        }`}>
-                          {project.statusLabel}
-                        </span>
-                      </div>
-                      <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4">
-                        {project.name}
-                      </h3>
-                      <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4">
-                        {project.description}
-                      </p>
-                      <div class="flex items-end justify-between mt-auto pt-4">
-                        <a
-                          href={project.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          title={project.linkType === 'instagram' ? 'Ver proyecto en Instagram' : project.linkType === 'demo' ? 'Abrir demo' : 'Visitar sitio'}
-                          aria-label={project.linkType === 'instagram' ? 'Ver proyecto en Instagram' : project.linkType === 'demo' ? 'Abrir demo' : 'Visitar sitio'}
-                          class={`text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 ${
-                            project.linkType === 'instagram' 
-                              ? 'hover:text-pink-500 focus-visible:ring-pink-500' 
-                              : 'hover:text-cyan-400 focus-visible:ring-cyan-400'
-                          }`}
-                        >
-                          {project.linkType === 'instagram' ? (
-                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                              <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                            </svg>
-                          ) : (
-                            <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                            </svg>
-                          )}
-                        </a>
-                        <div class="text-slate-500 text-sm">
-                          <span class="text-emerald-400 font-medium" id={`slide-current-${index}`}>{String(index + 1).padStart(2, '0')}</span>
-                          <span class="mx-2">/</span>
-                          <span>{String(mainProjects.length).padStart(2, '0')}</span>
-                        </div>
-                      </div>
+              <!-- Project 1: Churrascas Las Delicias 101 -->
+              <div class="carousel-slide col-span-2 grid md:grid-cols-2" data-slide={0}>
+                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop"
+                    alt="Churrascas Las Delicias 101"
+                    class="w-full h-full object-cover transition-transform duration-700"
+                    loading="eager"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
+                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">Pedidos Online</span>
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">WhatsApp</span>
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">E-commerce</span>
+                  </div>
+                </div>
+                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
+                  <div class="mb-2 sm:mb-3">
+                    <span class="text-xs px-3 py-1 rounded-full border bg-emerald-500/20 text-emerald-400 border-emerald-500/30" data-i18n="projects.p1.status">
+                      Producción
+                    </span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p1.name">
+                    Churrascas Las Delicias 101
+                  </h3>
+                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p1.desc">
+                    Plataforma de pedidos online para negocio gastronómico local. Optimiza la toma de pedidos y centraliza ventas vía WhatsApp. En producción y uso activo.
+                  </p>
+                  <div class="flex items-end justify-between mt-auto pt-4">
+                    <a
+                      href="https://delicias101.cl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Visitar sitio"
+                      aria-label="Visitar sitio"
+                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-cyan-400 focus-visible:ring-cyan-400"
+                    >
+                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                      </svg>
+                    </a>
+                    <div class="text-slate-500 text-sm">
+                      <span class="text-emerald-400 font-medium" id="slide-current-0">01</span>
+                      <span class="mx-2">/</span>
+                      <span>03</span>
                     </div>
                   </div>
-                </Fragment>
-              ))}
+                </div>
+              </div>
+
+              <!-- Project 2: GreenGuardian -->
+              <div class="carousel-slide col-span-2 grid md:grid-cols-2 hidden" data-slide={1}>
+                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop"
+                    alt="GreenGuardian"
+                    class="w-full h-full object-cover transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
+                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">Hidroponía</span>
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">IoT</span>
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">IA</span>
+                  </div>
+                </div>
+                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
+                  <div class="mb-2 sm:mb-3">
+                    <span class="text-xs px-3 py-1 rounded-full border bg-emerald-500/20 text-emerald-400 border-emerald-500/30" data-i18n="projects.p2.status">
+                      Proyecto académico
+                    </span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p2.name">
+                    GreenGuardian
+                  </h3>
+                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p2.desc">
+                    Sistema de cultivo hidropónico automatizado para producción de alimentos frescos. Integra sensores, IA y automatización para controlar parámetros de cultivo en tiempo real.
+                  </p>
+                  <div class="flex items-end justify-between mt-auto pt-4">
+                    <a
+                      href="https://instagram.com/greenguardiancl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Ver proyecto en Instagram"
+                      aria-label="Ver proyecto en Instagram"
+                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-pink-500 focus-visible:ring-pink-500"
+                    >
+                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                      </svg>
+                    </a>
+                    <div class="text-slate-500 text-sm">
+                      <span class="text-emerald-400 font-medium" id="slide-current-1">02</span>
+                      <span class="mx-2">/</span>
+                      <span>03</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Project 3: Gestión Fiscal -->
+              <div class="carousel-slide col-span-2 grid md:grid-cols-2 hidden" data-slide={2}>
+                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
+                  <img
+                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
+                    alt="Gestión Fiscal"
+                    class="w-full h-full object-cover transition-transform duration-700"
+                    loading="lazy"
+                  />
+                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
+                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
+                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">SaaS</span>
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">Tributario</span>
+                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50">Automatización</span>
+                  </div>
+                </div>
+                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
+                  <div class="mb-2 sm:mb-3">
+                    <span class="text-xs px-3 py-1 rounded-full border bg-amber-500/20 text-amber-400 border-amber-500/30" data-i18n="projects.p3.status">
+                      Demo
+                    </span>
+                  </div>
+                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p3.name">
+                    Gestión Fiscal
+                  </h3>
+                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p3.desc">
+                    Plataforma SaaS para gestión y automatización de procesos tributarios. Disponible en entorno de demostración (staging) en demosapp.cl para validar flujos y experiencia de usuario antes del lanzamiento.
+                  </p>
+                  <div class="flex items-end justify-between mt-auto pt-4">
+                    <a
+                      href="https://demosapp.cl"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      title="Abrir demo"
+                      aria-label="Abrir demo"
+                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-cyan-400 focus-visible:ring-cyan-400"
+                    >
+                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
+                      </svg>
+                    </a>
+                    <div class="text-slate-500 text-sm">
+                      <span class="text-emerald-400 font-medium" id="slide-current-2">03</span>
+                      <span class="mx-2">/</span>
+                      <span>03</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -152,17 +188,21 @@ const mainProjects: Project[] = [
         <!-- Navigation -->
         <div class="flex items-center justify-between mt-6">
           <div class="flex gap-2" id="carousel-dots">
-            {mainProjects.map((_, index) => (
-              <button
-                data-dot={index}
-                class={`h-2 rounded-full transition-all duration-300 ${
-                  index === 0 
-                    ? 'w-8 bg-emerald-500' 
-                    : 'w-2 bg-slate-700 hover:bg-slate-600'
-                }`}
-                aria-label={`Ir al proyecto ${index + 1}`}
-              />
-            ))}
+            <button
+              data-dot={0}
+              class="h-2 rounded-full transition-all duration-300 w-8 bg-emerald-500"
+              aria-label="Ir al proyecto 1"
+            />
+            <button
+              data-dot={1}
+              class="h-2 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600"
+              aria-label="Ir al proyecto 2"
+            />
+            <button
+              data-dot={2}
+              class="h-2 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600"
+              aria-label="Ir al proyecto 3"
+            />
           </div>
           <div class="flex gap-2">
             <button
@@ -193,7 +233,7 @@ const mainProjects: Project[] = [
               <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
               <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
             </span>
-            <span class="text-slate-400">1 proyecto en etapa de validación</span>
+            <span class="text-slate-400" data-i18n="projects.inDev">1 proyecto en etapa de validación</span>
           </span>
         </div>
 
@@ -205,7 +245,7 @@ const mainProjects: Project[] = [
               <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/50"></div>
               <div class="w-12 h-px bg-gradient-to-l from-transparent to-slate-700"></div>
             </div>
-            <p class="text-slate-400 text-sm">
+            <p class="text-slate-400 text-sm" data-i18n="projects.bridge">
               Detrás de cada proyecto hay un proceso claro.
             </p>
           </div>

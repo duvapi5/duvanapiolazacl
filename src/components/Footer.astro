@@ -10,8 +10,8 @@ const currentYear = new Date().getFullYear();
           <img src="/logo.png" alt="Logo Duván Apiolaza" class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl" width="64" height="64" loading="lazy" />
           <div class="text-center md:text-left">
             <p class="font-semibold text-white mb-1">Duván Apiolaza</p>
-          <p class="text-xs sm:text-sm">Ingeniero en Informática · Universidad Técnica Federico Santa María</p>
-          <p class="text-xs text-slate-500 mt-1 max-w-xs sm:max-w-none mx-auto md:mx-0">Sistemas web, automatización de procesos y soluciones digitales a medida</p>
+          <p class="text-xs sm:text-sm" data-i18n="footer.role">Ingeniero en Informática · Universidad Técnica Federico Santa María</p>
+          <p class="text-xs text-slate-500 mt-1 max-w-xs sm:max-w-none mx-auto md:mx-0" data-i18n="footer.desc">Sistemas web, automatización de procesos y soluciones digitales a medida</p>
           </div>
         </div>
         
@@ -56,7 +56,7 @@ const currentYear = new Date().getFullYear();
     <div data-animate data-animation="fade-in" class="opacity-0" style="animation-delay: 200ms;">
       <div class="border-t border-slate-800 mt-8 pt-8 text-center">
         <p class="text-sm">
-          &copy; {currentYear} Duván Apiolaza. Todos los derechos reservados.
+          &copy; {currentYear} Duván Apiolaza. <span data-i18n="footer.rights">Todos los derechos reservados.</span>
         </p>
       </div>
     </div>
