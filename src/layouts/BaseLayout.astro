@@ -1,0 +1,75 @@
+---
+import '../styles/global.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { 
+  title, 
+  description = "Duván Apiolaza - Ingeniero en Informática y Consultor Tecnológico. Desarrollo de soluciones digitales, automatización de procesos y consultoría para empresas." 
+} = Astro.props;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#020617" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://duvanapiolaza.cl/" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content="Portafolio y proyectos: desarrollo web, automatización y soluciones escalables." />
+    <meta property="og:image" content="https://duvanapiolaza.cl/og.png" />
+    <meta property="og:locale" content="es_CL" />
+    <meta property="og:site_name" content="Duván Apiolaza" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://duvanapiolaza.cl/" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content="Portafolio y proyectos: desarrollo web, automatización y soluciones escalables." />
+    <meta name="twitter:image" content="https://duvanapiolaza.cl/og.png" />
+
+    <!-- Additional SEO -->
+    <link rel="canonical" href="https://duvanapiolaza.cl/" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Duván Apiolaza" />
+  </head>
+  <body>
+    <slot />
+
+    <!-- Animate on scroll - global script -->
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              const el = entry.target as HTMLElement;
+              const animation = el.dataset.animation || 'fade-in-up';
+              el.classList.remove('opacity-0');
+              el.classList.add(`animate-${animation}`);
+              observer.unobserve(el);
+            }
+          });
+        },
+        { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
+      );
+
+      document.querySelectorAll('[data-animate]').forEach((el) => {
+        observer.observe(el);
+      });
+    </script>
+  </body>
+</html>
