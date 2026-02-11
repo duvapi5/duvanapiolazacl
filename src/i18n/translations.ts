@@ -192,7 +192,7 @@ export const translations = {
     "contact.human": "I work with few people at a time to ensure quality and real attention.",
 
     // Footer
-    "footer.role": "Computer Engineer · Universidad Técnica Federico Santa María",
+    "footer.role": "Software Engineer · Universidad Técnica Federico Santa María",
     "footer.desc": "Web systems, process automation and custom digital solutions",
     "footer.rights": "All rights reserved.",
   },
