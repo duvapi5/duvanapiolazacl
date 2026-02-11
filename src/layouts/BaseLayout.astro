@@ -24,6 +24,7 @@ const {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#020617" />
     <meta name="description" content={description} />
+    <meta name="keywords" content="Duván Apiolaza, Duvan Apiolaza, ingeniero informático, desarrollador web Chile, consultor TI, automatización procesos, desarrollo software, Duván Apiolaza Caroca, desarrollo web personalizado, consultoría tecnológica" />
     <title>{title}</title>
 
     <!-- Open Graph / Facebook -->
@@ -46,6 +47,43 @@ const {
     <link rel="canonical" href="https://duvanapiolaza.cl/" />
     <meta name="robots" content="index, follow" />
     <meta name="author" content="Duván Apiolaza" />
+    <meta name="geo.region" content="CL" />
+    <meta name="geo.placename" content="Chile" />
+    <meta name="language" content="es-CL" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Duván Apiolaza Caroca",
+        "alternateName": "Duván Apiolaza",
+        "url": "https://duvanapiolaza.cl",
+        "image": "https://duvanapiolaza.cl/logo.png",
+        "jobTitle": "Ingeniero en Informática",
+        "description": "Ingeniero en Informática especializado en desarrollo web, consultoría TI y automatización de procesos",
+        "email": "duvapi5@gmail.com",
+        "telephone": "+56942183179",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "CL"
+        },
+        "sameAs": [
+          "https://linkedin.com/in/duvan-apiolaza",
+          "https://github.com/duvapi5",
+          "https://instagram.com/duvanapiolaza.cl"
+        ],
+        "knowsAbout": [
+          "Desarrollo Web",
+          "Automatización de Procesos",
+          "Consultoría TI",
+          "TypeScript",
+          "React",
+          "Astro",
+          "Node.js"
+        ]
+      }
+    </script>
   </head>
   <body>
     <slot />
