@@ -1,3 +1,7 @@
+<div align="center">
+  <img src="public/logo.png" alt="Duván Apiolaza Logo" width="120" />
+</div>
+
 # duvanapiolaza.cl
 
 Sitio web personal de Duván Apiolaza — Ingeniero en Informática especializado en desarrollo web, consultoría TI y automatización de procesos.
