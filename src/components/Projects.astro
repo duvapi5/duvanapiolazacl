@@ -1,15 +1,114 @@
 ---
+const techIcons: Record<string, { icon: string; color: string }> = {
+  "React":        { icon: "https://cdn.simpleicons.org/react/61DAFB",        color: "#61DAFB" },
+  "Next.js":      { icon: "https://cdn.simpleicons.org/nextdotjs/white",      color: "#ffffff" },
+  "Node.js":      { icon: "https://cdn.simpleicons.org/nodedotjs/6DA55F",    color: "#6DA55F" },
+  "Django":       { icon: "https://cdn.simpleicons.org/django/44B78B",       color: "#44B78B" },
+  "PostgreSQL":   { icon: "https://cdn.simpleicons.org/postgresql/4169E1",   color: "#4169E1" },
+  "Redis":        { icon: "https://cdn.simpleicons.org/redis/FF4438",        color: "#FF4438" },
+  "Playwright":   { icon: "https://api.iconify.design/logos:playwright.svg",  color: "#45BA4B" },
+  "Docker":       { icon: "https://cdn.simpleicons.org/docker/2496ED",       color: "#2496ED" },
+  "Astro":        { icon: "https://cdn.simpleicons.org/astro/FF5D01",        color: "#FF5D01" },
+  "Tailwind CSS": { icon: "https://cdn.simpleicons.org/tailwindcss/38BDF8",  color: "#38BDF8" },
+  "Vercel":       { icon: "https://cdn.simpleicons.org/vercel/white",        color: "#ffffff" },
+  "Python":       { icon: "https://cdn.simpleicons.org/python/3776AB",       color: "#3776AB" },
+  "TensorFlow":   { icon: "https://cdn.simpleicons.org/tensorflow/FF6F00",   color: "#FF6F00" },
+  "OpenCV":       { icon: "https://cdn.simpleicons.org/opencv/5C3EE8",       color: "#5C3EE8" },
+  "Keras":        { icon: "https://cdn.simpleicons.org/keras/D00000",        color: "#D00000" },
+  "TypeScript":   { icon: "https://cdn.simpleicons.org/typescript/3178C6",  color: "#3178C6" },
+  "WhatsApp":     { icon: "https://cdn.simpleicons.org/whatsapp/25D366",     color: "#25D366" },
+  "WhatsApp API": { icon: "https://cdn.simpleicons.org/whatsapp/25D366",     color: "#25D366" },
+  "Arduino":      { icon: "https://cdn.simpleicons.org/arduino/00979D",      color: "#00979D" },
+  "CNN":          { icon: "https://cdn.simpleicons.org/pytorch/EE4C2C",      color: "#EE4C2C" },
+};
+
+const projects = [
+  {
+    nameKey: "projects.p3.name",
+    nameDefault: "Tu Impuesto",
+    descKey: "projects.p3.desc",
+    descDefault: "Plataforma SaaS para gestión y automatización de procesos tributarios. Simplifica declaraciones, centraliza documentos y automatiza cálculos fiscales.",
+    statusKey: "projects.p3.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://tuimpuesto.cl",
+    urlLabel: "tuimpuesto.cl",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Ftuimpuesto.cl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800&viewport.deviceScaleFactor=2",
+    techs: ["React", "Django", "PostgreSQL", "Redis", "Playwright", "Docker"],
+    featured: true,
+  },
+  {
+    nameKey: "projects.p5.name",
+    nameDefault: "LowSystem",
+    descKey: "projects.p5.desc",
+    descDefault: "Sitio web corporativo de mi empresa de soluciones tecnológicas. Ofrecemos desarrollo de software, automatización y consultoría IT.",
+    statusKey: "projects.p5.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://lowsystem.cl",
+    urlLabel: "lowsystem.cl",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Flowsystem.cl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800&viewport.deviceScaleFactor=2",
+    techs: ["Astro", "Tailwind CSS", "Vercel"],
+    featured: false,
+  },
+  {
+    nameKey: "projects.p1.name",
+    nameDefault: "Churrascas Las Delicias 101",
+    descKey: "projects.p1.desc",
+    descDefault: "Plataforma de pedidos online para negocio gastronómico local. Optimiza la toma de pedidos y centraliza ventas vía WhatsApp.",
+    statusKey: "projects.p1.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://churrascaslasdelicias101.cl",
+    urlLabel: "churrascaslasdelicias101.cl",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fchurrascaslasdelicias101.cl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800&viewport.deviceScaleFactor=2",
+    techs: ["Astro", "Tailwind CSS", "TypeScript", "WhatsApp", "Vercel"],
+    featured: false,
+  },
+  {
+    nameKey: "projects.p4.name",
+    nameDefault: "Peluquería Don Omar",
+    descKey: "projects.p4.desc",
+    descDefault: "Web moderna para peluquería tradicional con sistema de reservas vía WhatsApp.",
+    statusKey: "projects.p4.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://peluqueriadonomar.cl",
+    urlLabel: "peluqueriadonomar.cl",
+    image: "https://api.microlink.io/?url=https%3A%2F%2Fpeluqueriadonomar.cl&screenshot=true&meta=false&embed=screenshot.url&viewport.width=1280&viewport.height=800&viewport.deviceScaleFactor=2",
+    techs: ["Astro", "Tailwind CSS", "WhatsApp", "Vercel"],
+    featured: false,
+  },
+  {
+    nameKey: "projects.p2.name",
+    nameDefault: "GreenGuardian",
+    descKey: "projects.p2.desc",
+    descDefault: "Tesis de Ingeniería: modelo CNN aplicado a la detección de enfermedades en plantas. Redes neuronales convolucionales para análisis y clasificación de imágenes en tiempo real.",
+    statusKey: "projects.p2.status",
+    statusDefault: "Tesis de Titulación",
+    statusType: "academic" as const,
+    url: "https://www.linkedin.com/in/duvan-apiolaza/overlay/Education/1180212253/treasury/?profileId=ACoAAC-jBCYBwEG9AgcY1a8lqtpmrhE753jByqU",
+    urlLabel: "linkedin.com · Tesis USM",
+    image: "https://images.unsplash.com/photo-1530836369250-ef72a3f5cda8?w=800&h=500&fit=crop",
+    techs: ["Python", "TensorFlow", "CNN", "OpenCV", "Keras"],
+    featured: false,
+  },
+];
+
 ---
 
 <section id="proyectos" class="pt-20 pb-8 bg-slate-950 relative overflow-hidden">
+  <!-- Background effects -->
   <div class="absolute inset-0">
-    <div class="absolute top-1/3 -right-32 w-72 h-72 bg-emerald-500/10 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/3 -left-32 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/4 -right-32 w-96 h-96 bg-emerald-500/8 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-1/4 -left-32 w-96 h-96 bg-cyan-500/8 rounded-full blur-3xl"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-emerald-500/3 rounded-full blur-3xl"></div>
   </div>
 
-  <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
+    <!-- Header -->
     <div data-animate data-animation="fade-in-up" class="opacity-0">
-      <div class="text-center mb-10 sm:mb-12">
+      <div class="text-center mb-12 sm:mb-16">
         <span class="inline-block px-3 py-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 rounded-full border border-emerald-500/20 mb-4 uppercase tracking-wider" data-i18n="projects.badge">
           Portafolio
         </span>
@@ -22,417 +121,134 @@
       </div>
     </div>
 
-    <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 200ms;">
-      <div class="relative">
-        <div class="relative group">
-          <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-500 to-cyan-500 rounded-2xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="relative bg-slate-800/50 backdrop-blur-sm rounded-2xl overflow-hidden border border-slate-700/50">
-            <!-- Carousel container -->
-            <div id="carousel-content" class="grid md:grid-cols-2 md:min-h-[320px] transition-all duration-300 ease-out">
-              <!-- Project 1: Churrascas Las Delicias 101 -->
-              <div class="carousel-slide col-span-2 grid md:grid-cols-2" data-slide={0}>
-                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&h=400&fit=crop"
-                    alt="Churrascas Las Delicias 101"
-                    class="w-full h-full object-cover transition-transform duration-700"
-                    loading="eager"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
-                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p1.tag1">Pedidos Online</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p1.tag2">WhatsApp</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p1.tag3">E-commerce</span>
-                  </div>
-                </div>
-                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
-                  <div class="mb-2 sm:mb-3">
-                    <span class="text-xs px-3 py-1 rounded-full border bg-emerald-500/20 text-emerald-400 border-emerald-500/30" data-i18n="projects.p1.status">
-                      Producción
-                    </span>
-                  </div>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p1.name">
-                    Churrascas Las Delicias 101
-                  </h3>
-                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p1.desc">
-                    Plataforma de pedidos online para negocio gastronómico local. Optimiza la toma de pedidos y centraliza ventas vía WhatsApp. En producción y uso activo.
-                  </p>
-                  <div class="flex items-end justify-between mt-auto pt-4">
-                    <a
-                      href="https://churrascaslasdelicias101.cl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Visitar sitio"
-                      aria-label="Visitar sitio"
-                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-cyan-400 focus-visible:ring-cyan-400"
-                    >
-                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                      </svg>
-                    </a>
-                    <div class="text-slate-500 text-sm">
-                      <span class="text-emerald-400 font-medium" id="slide-current-0">01</span>
-                      <span class="mx-2">/</span>
-                      <span>05</span>
-                    </div>
-                  </div>
-                </div>
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+      {projects.map((project, index) => (
+        <div
+          data-animate
+          data-animation="fade-in-up"
+          class:list={["opacity-0 h-full", project.featured && "md:col-span-2 lg:col-span-2"]}
+          style={`animation-delay: ${(index + 1) * 100}ms;`}
+        >
+          <a
+            href={project.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="group flex flex-col h-full rounded-2xl overflow-hidden bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 transition-all duration-500 hover:border-emerald-500/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/[0.05]"
+          >
+            <!-- Browser top bar -->
+            <div class="flex items-center gap-2.5 px-4 py-2.5 bg-slate-900/80 border-b border-slate-700/30">
+              <div class="flex gap-1.5 shrink-0">
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-700 group-hover:bg-red-400/70 transition-colors duration-300"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-700 group-hover:bg-yellow-400/70 transition-colors duration-300"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-slate-700 group-hover:bg-green-400/70 transition-colors duration-300"></span>
               </div>
-
-              <!-- Project 2: GreenGuardian -->
-              <div class="carousel-slide col-span-2 grid md:grid-cols-2 hidden" data-slide={1}>
-                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600&h=400&fit=crop"
-                    alt="GreenGuardian"
-                    class="w-full h-full object-cover transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
-                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p2.tag1">Hidroponía</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p2.tag2">IoT</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p2.tag3">IA</span>
-                  </div>
-                </div>
-                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
-                  <div class="mb-2 sm:mb-3">
-                    <span class="text-xs px-3 py-1 rounded-full border bg-emerald-500/20 text-emerald-400 border-emerald-500/30" data-i18n="projects.p2.status">
-                      Proyecto académico
-                    </span>
-                  </div>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p2.name">
-                    GreenGuardian
-                  </h3>
-                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p2.desc">
-                    Sistema de cultivo hidropónico automatizado para producción de alimentos frescos. Integra sensores, IA y automatización para controlar parámetros de cultivo en tiempo real.
-                  </p>
-                  <div class="flex items-end justify-between mt-auto pt-4">
-                    <a
-                      href="https://instagram.com/greenguardiancl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Ver proyecto en Instagram"
-                      aria-label="Ver proyecto en Instagram"
-                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-pink-500 focus-visible:ring-pink-500"
-                    >
-                      <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                      </svg>
-                    </a>
-                    <div class="text-slate-500 text-sm">
-                      <span class="text-emerald-400 font-medium" id="slide-current-1">02</span>
-                      <span class="mx-2">/</span>
-                      <span>05</span>
-                    </div>
-                  </div>
-                </div>
+              <div class="flex-1 flex items-center gap-2 bg-slate-800/60 rounded-lg px-3 py-1 min-w-0">
+                <svg class="w-3 h-3 text-emerald-500/50 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                  <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+                <span class="text-[11px] text-slate-500 truncate font-mono">{project.urlLabel}</span>
               </div>
+              <svg class="w-4 h-4 text-slate-600 group-hover:text-emerald-400 group-hover:rotate-[-8deg] transition-all duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+              </svg>
+            </div>
 
-              <!-- Project 3: Gestión Fiscal -->
-              <div class="carousel-slide col-span-2 grid md:grid-cols-2 hidden" data-slide={2}>
-                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=400&fit=crop"
-                    alt="Gestión Fiscal"
-                    class="w-full h-full object-cover transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
-                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p3.tag1">SaaS</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p3.tag2">Tributario</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p3.tag3">Automatización</span>
-                  </div>
-                </div>
-                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
-                  <div class="mb-2 sm:mb-3">
-                    <span class="text-xs px-3 py-1 rounded-full border bg-amber-500/20 text-amber-400 border-amber-500/30" data-i18n="projects.p3.status">
-                      Demo
-                    </span>
-                  </div>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p3.name">
-                    Gestión Fiscal
-                  </h3>
-                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p3.desc">
-                    Plataforma SaaS para gestión y automatización de procesos tributarios. Disponible en entorno de demostración (staging) en demosapp.cl para validar flujos y experiencia de usuario antes del lanzamiento.
-                  </p>
-                  <div class="flex items-end justify-between mt-auto pt-4">
-                    <a
-                      href="https://demosapp.cl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Abrir demo"
-                      aria-label="Abrir demo"
-                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-cyan-400 focus-visible:ring-cyan-400"
-                    >
-                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                      </svg>
-                    </a>
-                    <div class="text-slate-500 text-sm">
-                      <span class="text-emerald-400 font-medium" id="slide-current-2">03</span>
-                      <span class="mx-2">/</span>
-                      <span>05</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
+            <!-- Project Hero / Screenshot -->
+            <div
+              class:list={[
+                "relative overflow-hidden flex-1",
+                project.featured ? "min-h-[16rem] md:min-h-[20rem]" : "min-h-[12rem]"
+              ]}
+            >
+              <img
+                src={project.image}
+                alt={project.nameDefault}
+                class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                loading={index === 0 ? "eager" : "lazy"}
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
 
-              <!-- Project 4: Peluquería Don Omar -->
-              <div class="carousel-slide col-span-2 grid md:grid-cols-2 hidden" data-slide={3}>
-                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=600&h=400&fit=crop"
-                    alt="Peluquería Don Omar"
-                    class="w-full h-full object-cover transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
-                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p4.tag1">Landing</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p4.tag2">Reservas</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p4.tag3">WhatsApp</span>
-                  </div>
-                </div>
-                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
-                  <div class="mb-2 sm:mb-3">
-                    <span class="text-xs px-3 py-1 rounded-full border bg-emerald-500/20 text-emerald-400 border-emerald-500/30" data-i18n="projects.p4.status">
-                      Producción
-                    </span>
-                  </div>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p4.name">
-                    Peluquería Don Omar
-                  </h3>
-                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p4.desc">
-                    Web moderna para peluquería tradicional de Rengo. Sistema de reservas integrado con WhatsApp, información de servicios y ubicación. Más de 50 años de tradición ahora con presencia digital.
-                  </p>
-                  <div class="flex items-end justify-between mt-auto pt-4">
-                    <a
-                      href="https://peluqueriadonomar.cl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Visitar sitio"
-                      aria-label="Visitar sitio"
-                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-cyan-400 focus-visible:ring-cyan-400"
-                    >
-                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                      </svg>
-                    </a>
-                    <div class="text-slate-500 text-sm">
-                      <span class="text-emerald-400 font-medium" id="slide-current-3">04</span>
-                      <span class="mx-2">/</span>
-                      <span>05</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Project 5: LowSystem -->
-              <div class="carousel-slide col-span-2 grid md:grid-cols-2 hidden" data-slide={4}>
-                <div class="relative h-48 sm:h-64 md:h-full overflow-hidden">
-                  <img
-                    src="https://images.unsplash.com/photo-1518773553398-650c184e0bb3?w=600&h=400&fit=crop"
-                    alt="LowSystem software project"
-                    class="w-full h-full object-cover transition-transform duration-700"
-                    loading="lazy"
-                  />
-                  <div class="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-slate-900/80 hidden md:block"></div>
-                  <div class="absolute inset-0 bg-gradient-to-t from-slate-900/80 to-transparent md:hidden"></div>
-                  <div class="absolute top-4 left-4 flex flex-wrap gap-2">
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p5.tag1">Empresa</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p5.tag2">Sitio Web</span>
-                    <span class="text-xs bg-slate-800/80 backdrop-blur-md text-slate-300 px-3 py-1.5 rounded-md border border-slate-700/50" data-i18n="projects.p5.tag3">Servicios TI</span>
-                  </div>
-                </div>
-                <div class="p-5 sm:p-6 md:p-8 flex flex-col">
-                  <div class="mb-2 sm:mb-3">
-                    <span class="text-xs px-3 py-1 rounded-full border bg-emerald-500/20 text-emerald-400 border-emerald-500/30" data-i18n="projects.p5.status">
-                      Producción
-                    </span>
-                  </div>
-                  <h3 class="text-xl sm:text-2xl md:text-3xl font-bold text-white mb-3 sm:mb-4" data-i18n="projects.p5.name">
-                    LowSystem
-                  </h3>
-                  <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-4 sm:mb-6 line-clamp-4" data-i18n="projects.p5.desc">
-                    Sitio web corporativo de mi empresa de soluciones tecnológicas. Ofrecemos desarrollo de software, automatización y consultoría IT.
-                  </p>
-                  <div class="flex items-end justify-between mt-auto pt-4">
-                    <a
-                      href="https://lowsystem.cl"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      title="Visitar sitio"
-                      aria-label="Visitar sitio"
-                      class="text-slate-400 transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-800 hover:text-cyan-400 focus-visible:ring-cyan-400"
-                    >
-                      <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9" />
-                      </svg>
-                    </a>
-                    <div class="text-slate-500 text-sm">
-                      <span class="text-emerald-400 font-medium" id="slide-current-4">05</span>
-                      <span class="mx-2">/</span>
-                      <span>05</span>
-                    </div>
-                  </div>
-                </div>
+              <!-- Status badge on image -->
+              <div class="absolute bottom-3 left-4">
+                {project.statusType === "production" && (
+                  <span class="inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm border border-emerald-500/20 text-emerald-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span data-i18n={project.statusKey}>{project.statusDefault}</span>
+                  </span>
+                )}
+                {project.statusType === "demo" && (
+                  <span class="inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm border border-amber-500/20 text-amber-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                    <span data-i18n={project.statusKey}>{project.statusDefault}</span>
+                  </span>
+                )}
+                {project.statusType === "academic" && (
+                  <span class="inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm border border-blue-500/20 text-blue-400">
+                    <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                    <span data-i18n={project.statusKey}>{project.statusDefault}</span>
+                  </span>
+                )}
               </div>
             </div>
-          </div>
-        </div>
 
-        <!-- Navigation -->
-        <div class="flex items-center justify-between mt-6">
-          <div class="flex gap-2" id="carousel-dots">
-            <button
-              data-dot={0}
-              class="h-2 rounded-full transition-all duration-300 w-8 bg-emerald-500"
-              aria-label="Ir al proyecto 1"
-            />
-            <button
-              data-dot={1}
-              class="h-2 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600"
-              aria-label="Ir al proyecto 2"
-            />
-            <button
-              data-dot={2}
-              class="h-2 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600"
-              aria-label="Ir al proyecto 3"
-            />
-            <button
-              data-dot={3}
-              class="h-2 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600"
-              aria-label="Ir al proyecto 4"
-            />
-            <button
-              data-dot={4}
-              class="h-2 rounded-full transition-all duration-300 w-2 bg-slate-700 hover:bg-slate-600"
-              aria-label="Ir al proyecto 5"
-            />          </div>
-          <div class="flex gap-2">
-            <button
-              id="carousel-prev"
-              class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-500/50 transition-all duration-300 active:scale-90"
-              aria-label="Proyecto anterior"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-              </svg>
-            </button>
-            <button
-              id="carousel-next"
-              class="w-10 h-10 rounded-full bg-slate-800 border border-slate-700 flex items-center justify-center text-slate-400 hover:text-white hover:border-emerald-500/50 transition-all duration-300 active:scale-90"
-              aria-label="Proyecto siguiente"
-            >
-              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </button>
-          </div>
-        </div>
+            <!-- Content -->
+            <div class="p-5">
+              <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300" data-i18n={project.nameKey}>
+                {project.nameDefault}
+              </h3>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2" data-i18n={project.descKey}>
+                {project.descDefault}
+              </p>
 
-        <!-- In Development Notice -->
-        <div class="mt-8 flex items-center justify-center gap-3 text-slate-500 text-sm">
-          <span class="flex items-center gap-2">
-            <span class="relative flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-            </span>
-            <span class="text-slate-400" data-i18n="projects.inDev">1 proyecto en etapa de validación</span>
-          </span>
-        </div>
-
-        <!-- Narrative bridge -->
-        <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 300ms;">
-          <div class="mt-16 text-center">
-            <div class="flex items-center justify-center gap-4 mb-4">
-              <div class="w-12 h-px bg-gradient-to-r from-transparent to-slate-700"></div>
-              <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/50"></div>
-              <div class="w-12 h-px bg-gradient-to-l from-transparent to-slate-700"></div>
+              <!-- Tech Stack -->
+              <div class="flex flex-wrap gap-2">
+                {project.techs.map((tech) => {
+                  const t = techIcons[tech];
+                  return (
+                    <span
+                      title={tech}
+                      class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/50 hover:border-slate-600/70 transition-colors duration-200"
+                    >
+                      {t ? (
+                        <img src={t.icon} alt={tech} class="w-3.5 h-3.5 shrink-0" loading="lazy" />
+                      ) : (
+                        <span class="w-3.5 h-3.5 shrink-0 rounded-sm bg-slate-600/60"></span>
+                      )}
+                      <span class="text-[11px] text-slate-400 font-mono">{tech}</span>
+                    </span>
+                  );
+                })}
+              </div>
             </div>
-            <p class="text-slate-400 text-sm" data-i18n="projects.bridge">
-              Detrás de cada proyecto hay un proceso claro.
-            </p>
-          </div>
+          </a>
         </div>
+      ))}
+    </div>
+
+    <!-- In Development Notice -->
+    <div class="mt-10 flex items-center justify-center gap-3 text-slate-500 text-sm">
+      <span class="flex items-center gap-2">
+        <span class="relative flex h-2 w-2">
+          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
+          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
+        </span>
+        <span class="text-slate-400" data-i18n="projects.inDev">1 proyecto en etapa de validación</span>
+      </span>
+    </div>
+
+    <!-- Narrative bridge -->
+    <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 700ms;">
+      <div class="mt-16 text-center">
+        <div class="flex items-center justify-center gap-4 mb-4">
+          <div class="w-12 h-px bg-gradient-to-r from-transparent to-slate-700"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-emerald-500/50"></div>
+          <div class="w-12 h-px bg-gradient-to-l from-transparent to-slate-700"></div>
+        </div>
+        <p class="text-slate-400 text-sm" data-i18n="projects.bridge">
+          Detrás de cada proyecto hay un proceso claro.
+        </p>
       </div>
     </div>
   </div>
 </section>
-
-<script>
-  // Carousel logic
-  const slides = document.querySelectorAll<HTMLElement>('.carousel-slide');
-  const dots = document.querySelectorAll<HTMLButtonElement>('#carousel-dots button');
-  const prevBtn = document.getElementById('carousel-prev');
-  const nextBtn = document.getElementById('carousel-next');
-  const totalSlides = slides.length;
-  let currentIndex = 0;
-  let isAnimating = false;
-
-  function goToSlide(index: number) {
-    if (isAnimating || index === currentIndex) return;
-    isAnimating = true;
-
-    // Fade out current
-    const currentSlide = slides[currentIndex] as HTMLElement;
-    currentSlide.style.opacity = '0';
-    currentSlide.style.transform = 'translateX(10px)';
-
-    setTimeout(() => {
-      // Hide current, show next
-      currentSlide.classList.add('hidden');
-      currentSlide.style.opacity = '';
-      currentSlide.style.transform = '';
-
-      const nextSlide = slides[index] as HTMLElement;
-      nextSlide.classList.remove('hidden');
-      nextSlide.style.opacity = '0';
-      nextSlide.style.transform = 'translateX(-10px)';
-
-      // Force reflow
-      void nextSlide.offsetWidth;
-
-      nextSlide.style.transition = 'opacity 0.3s ease-out, transform 0.3s ease-out';
-      nextSlide.style.opacity = '1';
-      nextSlide.style.transform = 'translateX(0)';
-
-      // Update dots
-      dots.forEach((dot, i) => {
-        if (i === index) {
-          dot.classList.remove('w-2', 'bg-slate-700', 'hover:bg-slate-600');
-          dot.classList.add('w-8', 'bg-emerald-500');
-        } else {
-          dot.classList.remove('w-8', 'bg-emerald-500');
-          dot.classList.add('w-2', 'bg-slate-700', 'hover:bg-slate-600');
-        }
-      });
-
-      currentIndex = index;
-      setTimeout(() => {
-        isAnimating = false;
-        nextSlide.style.transition = '';
-      }, 300);
-    }, 150);
-  }
-
-  prevBtn?.addEventListener('click', () => {
-    const newIndex = (currentIndex - 1 + totalSlides) % totalSlides;
-    goToSlide(newIndex);
-  });
-
-  nextBtn?.addEventListener('click', () => {
-    const newIndex = (currentIndex + 1) % totalSlides;
-    goToSlide(newIndex);
-  });
-
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => goToSlide(index));
-  });
-</script>

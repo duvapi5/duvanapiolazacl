@@ -7,7 +7,9 @@ const currentYear = new Date().getFullYear();
     <div data-animate data-animation="fade-in-up" class="opacity-0">
       <div class="flex flex-col md:flex-row justify-between items-center gap-6">
         <div class="flex items-center gap-4">
-          <img src="/logo.png" alt="Logo Duván Apiolaza" class="w-14 h-14 sm:w-16 sm:h-16 rounded-xl" width="64" height="64" loading="lazy" />
+          <a href="#hero" aria-label="Ir al inicio" class="shrink-0">
+            <img src="/logo-transparent.png" alt="Logo Duván Apiolaza" class="w-14 h-14 sm:w-16 sm:h-16 logo-neon-pulse" width="64" height="64" loading="lazy" />
+          </a>
           <div class="text-center md:text-left">
             <p class="font-semibold text-white mb-1">Duván Apiolaza</p>
           <p class="text-xs sm:text-sm" data-i18n="footer.role">Ingeniero en Informática · Universidad Técnica Federico Santa María</p>
@@ -62,3 +64,32 @@ const currentYear = new Date().getFullYear();
     </div>
   </div>
 </footer>
+
+<style>
+  /* drop-shadow sigue la silueta real del escudo (PNG con fondo transparente) */
+  .logo-neon-pulse {
+    display: block;
+    animation: neonPulse 3s ease-in-out infinite;
+  }
+
+  @keyframes neonPulse {
+    0%, 100% {
+      filter:
+        drop-shadow(0 0 4px rgba(52, 211, 153, 0.45))
+        drop-shadow(0 0 10px rgba(52, 211, 153, 0.2));
+    }
+    50% {
+      filter:
+        drop-shadow(0 0 7px rgba(52, 211, 153, 0.85))
+        drop-shadow(0 0 18px rgba(52, 211, 153, 0.45))
+        drop-shadow(0 0 36px rgba(52, 211, 153, 0.18));
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .logo-neon-pulse {
+      animation: none;
+      filter: drop-shadow(0 0 6px rgba(52, 211, 153, 0.4));
+    }
+  }
+</style>
