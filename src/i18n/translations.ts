@@ -40,7 +40,7 @@ export const translations = {
     // Projects
     "projects.badge": "Portafolio",
     "projects.title": "Proyectos",
-    "projects.titleHighlight": "reales",
+    "projects.titleHighlight": "activos",
     "projects.subtitle": "Sistemas funcionando en producción, resolviendo problemas concretos.",
     "projects.p1.name": "Churrascas Las Delicias 101",
     "projects.p1.desc": "Plataforma de pedidos online para negocio gastronómico local. Optimiza la toma de pedidos y centraliza ventas vía WhatsApp. En producción y uso activo.",
