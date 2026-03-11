@@ -20,6 +20,8 @@ const techIcons: Record<string, { icon: string; color: string }> = {
   "WhatsApp API": { icon: "https://cdn.simpleicons.org/whatsapp/25D366",     color: "#25D366" },
   "Arduino":      { icon: "https://cdn.simpleicons.org/arduino/00979D",      color: "#00979D" },
   "CNN":          { icon: "https://cdn.simpleicons.org/pytorch/EE4C2C",      color: "#EE4C2C" },
+  "Icecast":      { icon: "https://api.iconify.design/mdi:radio-tower.svg?color=%23FF6600",  color: "#FF6600" },
+  "AzuraCast":    { icon: "https://api.iconify.design/mdi:radio.svg?color=%230096FF",        color: "#0096FF" },
 };
 
 const projects = [
@@ -27,7 +29,7 @@ const projects = [
     nameKey: "projects.p3.name",
     nameDefault: "Tu Impuesto",
     descKey: "projects.p3.desc",
-    descDefault: "Plataforma SaaS para gestión y automatización de procesos tributarios. Simplifica declaraciones, centraliza documentos y automatiza cálculos fiscales.",
+    descDefault: "Plataforma SaaS para gestión y automatización de procesos tributarios. Centraliza documentos, simplifica declaraciones y automatiza cálculos fiscales para empresas.",
     statusKey: "projects.p3.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -41,7 +43,7 @@ const projects = [
     nameKey: "projects.p5.name",
     nameDefault: "LowSystem",
     descKey: "projects.p5.desc",
-    descDefault: "Sitio web corporativo de mi empresa de soluciones tecnológicas. Ofrecemos desarrollo de software, automatización y consultoría IT.",
+    descDefault: "Sitio corporativo de empresa tecnológica orientada a desarrollo de software, automatización de procesos y soluciones digitales para negocios.",
     statusKey: "projects.p5.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -55,7 +57,7 @@ const projects = [
     nameKey: "projects.p1.name",
     nameDefault: "Churrascas Las Delicias 101",
     descKey: "projects.p1.desc",
-    descDefault: "Plataforma de pedidos online para negocio gastronómico local. Optimiza la toma de pedidos y centraliza ventas vía WhatsApp.",
+    descDefault: "Plataforma web de pedidos para negocio gastronómico local. Permite visualizar productos y enviar pedidos directamente a WhatsApp.",
     statusKey: "projects.p1.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -69,7 +71,7 @@ const projects = [
     nameKey: "projects.p4.name",
     nameDefault: "Peluquería Don Omar",
     descKey: "projects.p4.desc",
-    descDefault: "Web moderna para peluquería tradicional con sistema de reservas vía WhatsApp.",
+    descDefault: "Sitio web moderno para peluquería tradicional con información del negocio, contacto directo y sistema de reservas vía WhatsApp.",
     statusKey: "projects.p4.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -79,6 +81,23 @@ const projects = [
     techs: ["Astro", "Tailwind CSS", "WhatsApp", "Vercel"],
     featured: false,
   },
+  {
+    nameKey: "projects.p6.name",
+    nameDefault: "Radio Auténtica",
+    descKey: "projects.p6.desc",
+    descDefault: "Plataforma web para radio online con reproductor de streaming en vivo e integración con servidor Icecast y panel AzuraCast.",
+    statusKey: "projects.p6.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://www.radioautentica.cl/",
+    urlLabel: "radioautentica.cl",
+    image: "/projects/radioautentica.jpg",
+    techs: ["Icecast", "AzuraCast", "Docker", "Astro", "Tailwind CSS", "Vercel"],
+    featured: false,
+  },
+];
+
+const hiddenProjects = [
   {
     nameKey: "projects.p2.name",
     nameDefault: "GreenGuardian",
@@ -197,7 +216,7 @@ const projects = [
               <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300" data-i18n={project.nameKey}>
                 {project.nameDefault}
               </h3>
-              <p class="text-slate-400 text-sm leading-relaxed mb-4 line-clamp-2" data-i18n={project.descKey}>
+              <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n={project.descKey}>
                 {project.descDefault}
               </p>
 
@@ -226,6 +245,113 @@ const projects = [
       ))}
     </div>
 
+    <!-- Show More Toggle -->
+    <div class="mt-8 text-center">
+      <button
+        id="toggle-more-btn"
+        class="inline-flex items-center gap-2 px-5 py-2.5 text-sm font-medium text-slate-400 hover:text-white border border-slate-700/50 hover:border-emerald-500/40 rounded-xl transition-all duration-300 bg-slate-900/40 hover:bg-slate-900/80 group"
+      >
+        <span id="label-show" data-i18n="projects.showMore">Más proyectos</span>
+        <span id="label-hide" class="hidden" data-i18n="projects.showLess">Ver menos</span>
+        <svg id="toggle-arrow" class="w-4 h-4 transition-transform duration-300 text-emerald-500/60 group-hover:text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Hidden / Extra Projects -->
+    <div id="more-projects-grid" class="overflow-hidden transition-[max-height] duration-500 ease-in-out" style="max-height: 0;">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
+        {hiddenProjects.map((project, index) => (
+          <div
+            data-animate
+            data-animation="fade-in-up"
+            class="opacity-0 h-full"
+            style={`animation-delay: ${(index + 1) * 100}ms;`}
+          >
+            <a
+              href={project.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="group flex flex-col h-full rounded-2xl overflow-hidden bg-slate-900/60 backdrop-blur-sm border border-slate-700/50 transition-all duration-500 hover:border-emerald-500/30 hover:-translate-y-1 hover:shadow-2xl hover:shadow-emerald-500/[0.05]"
+            >
+              <div class="flex items-center gap-2.5 px-4 py-2.5 bg-slate-900/80 border-b border-slate-700/30">
+                <div class="flex gap-1.5 shrink-0">
+                  <span class="w-2.5 h-2.5 rounded-full bg-slate-700 group-hover:bg-red-400/70 transition-colors duration-300"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-slate-700 group-hover:bg-yellow-400/70 transition-colors duration-300"></span>
+                  <span class="w-2.5 h-2.5 rounded-full bg-slate-700 group-hover:bg-green-400/70 transition-colors duration-300"></span>
+                </div>
+                <div class="flex-1 flex items-center gap-2 bg-slate-800/60 rounded-lg px-3 py-1 min-w-0">
+                  <svg class="w-3 h-3 text-emerald-500/50 shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                  </svg>
+                  <span class="text-[11px] text-slate-500 truncate font-mono">{project.urlLabel}</span>
+                </div>
+                <svg class="w-4 h-4 text-slate-600 group-hover:text-emerald-400 group-hover:rotate-[-8deg] transition-all duration-300 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                </svg>
+              </div>
+              <div class="relative overflow-hidden flex-1 min-h-[12rem]">
+                <img
+                  src={project.image}
+                  alt={project.nameDefault}
+                  class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  loading="lazy"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
+                <div class="absolute bottom-3 left-4">
+                  {project.statusType === "production" && (
+                    <span class="inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm border border-emerald-500/20 text-emerald-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                      <span data-i18n={project.statusKey}>{project.statusDefault}</span>
+                    </span>
+                  )}
+                  {project.statusType === "demo" && (
+                    <span class="inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm border border-amber-500/20 text-amber-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
+                      <span data-i18n={project.statusKey}>{project.statusDefault}</span>
+                    </span>
+                  )}
+                  {project.statusType === "academic" && (
+                    <span class="inline-flex items-center gap-1.5 text-[10px] font-medium px-2.5 py-1 rounded-full bg-slate-900/70 backdrop-blur-sm border border-blue-500/20 text-blue-400">
+                      <span class="w-1.5 h-1.5 rounded-full bg-blue-500"></span>
+                      <span data-i18n={project.statusKey}>{project.statusDefault}</span>
+                    </span>
+                  )}
+                </div>
+              </div>
+              <div class="p-5">
+                <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300" data-i18n={project.nameKey}>
+                  {project.nameDefault}
+                </h3>
+                <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n={project.descKey}>
+                  {project.descDefault}
+                </p>
+                <div class="flex flex-wrap gap-2">
+                  {project.techs.map((tech) => {
+                    const t = techIcons[tech];
+                    return (
+                      <span
+                        title={tech}
+                        class="inline-flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg bg-slate-800/80 border border-slate-700/50 hover:border-slate-600/70 transition-colors duration-200"
+                      >
+                        {t ? (
+                          <img src={t.icon} alt={tech} class="w-3.5 h-3.5 shrink-0" loading="lazy" />
+                        ) : (
+                          <span class="w-3.5 h-3.5 shrink-0 rounded-sm bg-slate-600/60"></span>
+                        )}
+                        <span class="text-[11px] text-slate-400 font-mono">{tech}</span>
+                      </span>
+                    );
+                  })}
+                </div>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+
     <!-- In Development Notice -->
     <div class="mt-10 flex items-center justify-center gap-3 text-slate-500 text-sm">
       <span class="flex items-center gap-2">
@@ -252,3 +378,22 @@ const projects = [
     </div>
   </div>
 </section>
+
+<script>
+  const btn = document.getElementById('toggle-more-btn');
+  const grid = document.getElementById('more-projects-grid') as HTMLElement | null;
+  const labelShow = document.getElementById('label-show');
+  const labelHide = document.getElementById('label-hide');
+  const arrow = document.getElementById('toggle-arrow');
+  let expanded = false;
+
+  btn?.addEventListener('click', () => {
+    expanded = !expanded;
+    if (grid) {
+      grid.style.maxHeight = expanded ? grid.scrollHeight + 'px' : '0';
+    }
+    labelShow?.classList.toggle('hidden', expanded);
+    labelHide?.classList.toggle('hidden', !expanded);
+    arrow?.classList.toggle('rotate-180', expanded);
+  });
+</script>

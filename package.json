@@ -15,6 +15,7 @@
   "devDependencies": {
     "@astrojs/check": "^0.9.6",
     "@tailwindcss/vite": "^4.1.18",
+    "puppeteer": "^24.39.0",
     "sharp": "^0.34.4",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3"
