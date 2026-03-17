@@ -22,6 +22,8 @@ const techIcons: Record<string, { icon: string; color: string }> = {
   "CNN":          { icon: "https://cdn.simpleicons.org/pytorch/EE4C2C",      color: "#EE4C2C" },
   "Icecast":      { icon: "https://api.iconify.design/mdi:radio-tower.svg?color=%23FF6600",  color: "#FF6600" },
   "AzuraCast":    { icon: "https://api.iconify.design/mdi:radio.svg?color=%230096FF",        color: "#0096FF" },
+  "SvelteKit":    { icon: "https://cdn.simpleicons.org/svelte/FF3E00",                        color: "#FF3E00" },
+  "Three.js":     { icon: "https://cdn.simpleicons.org/threedotjs/white",                     color: "#ffffff" },
 };
 
 const projects = [
@@ -98,6 +100,20 @@ const projects = [
 ];
 
 const hiddenProjects = [
+  {
+    nameKey: "projects.p7.name",
+    nameDefault: "Proyecto Zátira",
+    descKey: "projects.p7.desc",
+    descDefault: "Landing experimental para Zátira, productora de eventos electrónicos. Estética glitch, animaciones 3D y microinteracciones inspiradas en la cultura nocturna.",
+    statusKey: "projects.p7.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://proyectozatira.cl",
+    urlLabel: "proyectozatira.cl",
+    image: "/projects/proyectozatira.jpg",
+    techs: ["SvelteKit", "TypeScript", "Three.js", "Tailwind CSS", "Redis", "Vercel"],
+    featured: false,
+  },
   {
     nameKey: "projects.p2.name",
     nameDefault: "GreenGuardian",
