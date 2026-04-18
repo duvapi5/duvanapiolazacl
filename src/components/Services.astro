@@ -1,163 +1,294 @@
 ---
+
 ---
 
 <section id="servicios" class="py-24 bg-slate-900 relative overflow-hidden">
-  <div class="absolute inset-0 opacity-30">
-    <div class="absolute top-1/4 -left-20 w-72 h-72 bg-emerald-500/20 rounded-full blur-3xl"></div>
-    <div class="absolute bottom-1/4 -right-20 w-72 h-72 bg-violet-500/20 rounded-full blur-3xl"></div>
-  </div>
-  <div class="absolute inset-0 opacity-[0.02]"
-    style="background-image: linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px); background-size: 50px 50px;">
-  </div>
   <div class="max-w-5xl mx-auto px-4 sm:px-6 relative z-10">
+    <!-- Encabezado -->
     <div data-animate data-animation="fade-in-up" class="opacity-0">
-      <div class="text-center mb-10 sm:mb-16">
-        <span data-i18n="services.badge" class="inline-block px-3 py-1 text-xs font-medium text-emerald-400 bg-emerald-500/10 rounded-full border border-emerald-500/20 mb-4 uppercase tracking-wider">
+      <div class="text-center mb-12 sm:mb-16">
+        <span
+          class="inline-block text-xs font-semibold tracking-widest uppercase mb-4"
+          style="color: #1D9E75;"
+          data-i18n="services.badge"
+        >
           Servicios
         </span>
-        <h2 class="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
-          <span data-i18n="services.title">¿Cómo puedo</span> <span data-i18n="services.titleHighlight" class="text-emerald-400">ayudarte</span>?
+        <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
+          <span data-i18n="services.title">Lo que</span>
+          <span style="color: #1D9E75;" data-i18n="services.titleHighlight"
+            >construyo</span
+          >
         </h2>
-        <p data-i18n="services.subtitle" class="text-slate-400 max-w-xl mx-auto">
-          Soluciones tecnológicas enfocadas en resolver problemas reales y sostener el crecimiento.
+        <p
+          class="text-slate-400 max-w-xl mx-auto text-base sm:text-lg"
+          data-i18n="services.subtitle"
+        >
+          Webs que trabajan por tu negocio, no solo ocupan espacio en internet.
         </p>
       </div>
     </div>
 
-    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-      <!-- Service 1: Desarrollo Web -->
-      <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 0ms;">
-        <div class="group relative h-full">
-          <div class="absolute -inset-0.5 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 hover:border-slate-600/50 transition-all duration-500 h-full flex flex-col">
-            <div class="relative mb-6">
-              <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-500 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div class="relative w-14 h-14 bg-gradient-to-br from-emerald-400 to-cyan-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-                </svg>
+    <div class="flex flex-col gap-5">
+      <!-- Card principal: Desarrollo Web -->
+      <div
+        data-animate
+        data-animation="fade-in-up"
+        class="opacity-0"
+        style="animation-delay: 100ms;"
+      >
+        <div
+          class="rounded-2xl border border-slate-700/60 bg-slate-800/50 p-8 sm:p-10 overflow-hidden"
+        >
+          <div class="flex flex-col lg:flex-row gap-10">
+            <!-- Columna izquierda: texto -->
+            <div class="flex-1 flex flex-col justify-between gap-6">
+              <div>
+                <span
+                  class="inline-block text-xs font-semibold tracking-wider uppercase px-3 py-1 rounded-full border mb-5"
+                  style="color: #1D9E75; border-color: #1D9E7540; background: #1D9E7510;"
+                  data-i18n="services.main.badge"
+                >
+                  Servicio principal
+                </span>
+                <h3
+                  class="text-2xl sm:text-3xl font-bold text-white mb-3 leading-snug"
+                  data-i18n="services.main.title"
+                >
+                  Tu negocio merece una web que atraiga clientes
+                </h3>
+                <p
+                  class="text-slate-400 leading-relaxed"
+                  data-i18n="services.main.desc"
+                >
+                  Diseño y desarrollo sitios web rápidos, modernos y fáciles de
+                  usar. Sin plantillas genéricas. Sin tecnicismos. Con
+                  resultados reales.
+                </p>
+              </div>
+              <div>
+                <a
+                  href="#proyectos"
+                  class="inline-flex items-center gap-2 font-semibold px-6 py-3 rounded-xl text-white transition-all duration-300 hover:opacity-90 hover:-translate-y-0.5"
+                  style="background-color: #1D9E75;"
+                >
+                  <span data-i18n="services.main.cta">Ver proyectos</span>
+                  <svg
+                    class="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                  </svg>
+                </a>
               </div>
             </div>
-            <h3 data-i18n="services.s1.title" class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">
-              Desarrollo Web
-            </h3>
-            <p data-i18n="services.s1.desc" class="text-slate-400 text-sm mb-5">Sistemas web pensados para crecer sin fricción técnica.</p>
-            <ul class="space-y-3 mt-auto">
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+
+            <!-- Columna derecha: checklist -->
+            <div
+              class="lg:w-72 flex flex-col justify-center gap-4 rounded-xl p-6 bg-slate-700/30"
+            >
+              <div class="flex items-start gap-3">
+                <svg
+                  class="w-5 h-5 shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style="color: #1D9E75;"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span data-i18n="services.s1.i1">Sistemas web a medida, escalables y mantenibles</span>
-              </li>
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                <span class="text-white text-sm" data-i18n="services.main.c1"
+                  >Entrega en 7 a 14 días hábiles</span
+                >
+              </div>
+              <div class="flex items-start gap-3">
+                <svg
+                  class="w-5 h-5 shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style="color: #1D9E75;"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span data-i18n="services.s1.i2">Plataformas internas para operación y control</span>
-              </li>
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                <span class="text-white text-sm" data-i18n="services.main.c2"
+                  >Soporte incluido el primer mes</span
+                >
+              </div>
+              <div class="flex items-start gap-3">
+                <svg
+                  class="w-5 h-5 shrink-0 mt-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  style="color: #1D9E75;"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2.5"
+                    d="M5 13l4 4L19 7"></path>
                 </svg>
-                <span data-i18n="services.s1.i3">APIs e integraciones con sistemas reales</span>
-              </li>
-            </ul>
+                <span class="text-white text-sm" data-i18n="services.main.c3"
+                  >Sin contratos largos ni letra chica</span
+                >
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
-      <!-- Service 2: Consultoría TI -->
-      <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 150ms;">
-        <div class="group relative h-full">
-          <div class="absolute -inset-0.5 bg-gradient-to-r from-violet-400 to-purple-500 rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 hover:border-slate-600/50 transition-all duration-500 h-full flex flex-col">
-            <div class="relative mb-6">
-              <div class="absolute inset-0 bg-gradient-to-r from-violet-400 to-purple-500 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div class="relative w-14 h-14 bg-gradient-to-br from-violet-400 to-purple-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
-                </svg>
-              </div>
+      <!-- Cards secundarias -->
+      <div class="grid sm:grid-cols-2 gap-5">
+        <!-- Integraciones -->
+        <div
+          data-animate
+          data-animation="fade-in-up"
+          class="opacity-0"
+          style="animation-delay: 200ms;"
+        >
+          <div
+            class="rounded-2xl border border-slate-700/60 bg-slate-800/50 p-7 h-full flex flex-col gap-4"
+          >
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center"
+              style="background: #1D9E7515; border: 1px solid #1D9E7540;"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                style="color: #1D9E75;"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1"
+                ></path>
+              </svg>
             </div>
-            <h3 data-i18n="services.s2.title" class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">
-              Consultoría TI
-            </h3>
-            <p data-i18n="services.s2.desc" class="text-slate-400 text-sm mb-5">Criterio técnico y visión de largo plazo para decisiones sostenibles.</p>
-            <ul class="space-y-3 mt-auto">
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-i18n="services.s2.i1">Evaluación de procesos y arquitectura existente</span>
-              </li>
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-i18n="services.s2.i2">Apoyo en decisiones técnicas clave</span>
-              </li>
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-i18n="services.s2.i3">Acompañamiento continuo con visión estratégica</span>
-              </li>
-            </ul>
+            <div>
+              <h3
+                class="text-lg font-bold text-white mb-2"
+                data-i18n="services.int.title"
+              >
+                Integraciones
+              </h3>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-i18n="services.int.desc"
+              >
+                Conecto tu web con WhatsApp, reservas, pagos y las herramientas
+                que ya usas en tu negocio.
+              </p>
+            </div>
+            <p
+              class="text-sm mt-auto pt-3 border-t border-slate-700/50 text-slate-500"
+              data-i18n="services.int.detail"
+            >
+              Sin procesos manuales innecesarios
+            </p>
           </div>
         </div>
-      </div>
 
-      <!-- Service 3: Automatización -->
-      <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 300ms;">
-        <div class="group relative h-full">
-          <div class="absolute -inset-0.5 bg-gradient-to-r from-amber-400 to-orange-500 rounded-2xl blur opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-          <div class="relative bg-slate-800/50 backdrop-blur-sm p-8 rounded-2xl border border-slate-700/50 hover:border-slate-600/50 transition-all duration-500 h-full flex flex-col">
-            <div class="relative mb-6">
-              <div class="absolute inset-0 bg-gradient-to-r from-amber-400 to-orange-500 rounded-xl blur-lg opacity-40 group-hover:opacity-60 transition-opacity duration-500"></div>
-              <div class="relative w-14 h-14 bg-gradient-to-br from-amber-400 to-orange-500 rounded-xl flex items-center justify-center text-white group-hover:scale-110 transition-transform duration-300">
-                <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
+        <!-- Mantención -->
+        <div
+          data-animate
+          data-animation="fade-in-up"
+          class="opacity-0"
+          style="animation-delay: 300ms;"
+        >
+          <div
+            class="rounded-2xl border border-slate-700/60 bg-slate-800/50 p-7 h-full flex flex-col gap-4"
+          >
+            <div
+              class="w-10 h-10 rounded-xl flex items-center justify-center"
+              style="background: #1D9E7515; border: 1px solid #1D9E7540;"
+            >
+              <svg
+                class="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                style="color: #1D9E75;"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"
+                ></path>
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+              </svg>
             </div>
-            <h3 data-i18n="services.s3.title" class="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300">
-              Automatización
-            </h3>
-            <p data-i18n="services.s3.desc" class="text-slate-400 text-sm mb-5">Automatización aplicada a procesos reales.</p>
-            <ul class="space-y-3 mt-auto">
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-i18n="services.s3.i1">Flujos automatizados para reducir trabajo manual</span>
-              </li>
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-i18n="services.s3.i2">Integración entre sistemas y herramientas</span>
-              </li>
-              <li class="text-slate-300 flex items-start gap-3 text-sm">
-                <svg class="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                </svg>
-                <span data-i18n="services.s3.i3">Mejora de eficiencia operativa mediante software bien diseñado</span>
-              </li>
-            </ul>
+            <div>
+              <h3
+                class="text-lg font-bold text-white mb-2"
+                data-i18n="services.maint.title"
+              >
+                Mantención
+              </h3>
+              <p
+                class="text-slate-400 text-sm leading-relaxed"
+                data-i18n="services.maint.desc"
+              >
+                Tu sitio siempre funcionando. Me encargo de actualizaciones,
+                ajustes y soporte para que tú te enfoques en tu negocio.
+              </p>
+            </div>
+            <p
+              class="text-sm mt-auto pt-3 border-t border-slate-700/50 text-slate-400"
+            >
+              <span data-i18n="services.maint.prefix">Desde</span>
+              <span
+                class="font-semibold"
+                style="color: #1D9E75;"
+                data-i18n="services.maint.price">$50.000 / mes</span
+              >
+            </p>
           </div>
         </div>
       </div>
     </div>
 
-    <div data-animate data-animation="fade-in-up" class="opacity-0" style="animation-delay: 500ms;">
-      <div class="mt-16 text-center">
-        <p class="text-slate-500 text-sm">
-          <span data-i18n="services.cta">¿No tienes claro por dónde empezar?</span>{" "}
-          <a href="#contacto" data-i18n="services.ctaLink" class="text-emerald-400 hover:text-emerald-300 transition-colors underline underline-offset-4">
-            Conversemos
-          </a>
-        </p>
-      </div>
+    <!-- CTA al fondo -->
+    <div
+      data-animate
+      data-animation="fade-in-up"
+      class="opacity-0 mt-14 text-center"
+      style="animation-delay: 400ms;"
+    >
+      <p class="text-slate-500 text-sm">
+        <span data-i18n="services.cta">¿No sabes por dónde empezar?</span>{" "}
+        <a
+          href="#contacto"
+          class="transition-colors underline underline-offset-4 hover:opacity-80"
+          style="color: #1D9E75;"
+          data-i18n="services.ctaLink"
+        >
+          Conversemos →
+        </a>
+      </p>
     </div>
   </div>
 </section>

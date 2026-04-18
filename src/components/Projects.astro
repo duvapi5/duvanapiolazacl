@@ -1,4 +1,21 @@
 ---
+type StatusType = "production" | "demo" | "academic";
+
+interface Project {
+  nameKey: string;
+  nameDefault: string;
+  descKey: string;
+  descDefault: string;
+  statusKey: string;
+  statusDefault: string;
+  statusType: StatusType;
+  url: string;
+  urlLabel: string;
+  image: string;
+  techs: string[];
+  featured: boolean;
+}
+
 const techIcons: Record<string, { icon: string; color: string }> = {
   "React":        { icon: "https://cdn.simpleicons.org/react/61DAFB",        color: "#61DAFB" },
   "Next.js":      { icon: "https://cdn.simpleicons.org/nextdotjs/white",      color: "#ffffff" },
@@ -26,12 +43,12 @@ const techIcons: Record<string, { icon: string; color: string }> = {
   "Three.js":     { icon: "https://cdn.simpleicons.org/threedotjs/white",                     color: "#ffffff" },
 };
 
-const projects = [
+const projects: Project[] = [
   {
     nameKey: "projects.p3.name",
     nameDefault: "Tu Impuesto",
     descKey: "projects.p3.desc",
-    descDefault: "Plataforma SaaS tributaria para empresas. Automatiza declaraciones, centraliza documentos y acelera la operación fiscal.",
+    descDefault: "Lo construimos desde cero. Hoy empresas en Chile controlan sus impuestos sin morir en el intento.",
     statusKey: "projects.p3.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -45,7 +62,7 @@ const projects = [
     nameKey: "projects.p5.name",
     nameDefault: "LowSystem",
     descKey: "projects.p5.desc",
-    descDefault: "Landing corporativa para LowSystem. Comunica servicios de desarrollo, automatización y soluciones digitales para empresas.",
+    descDefault: "Mi propia empresa. Donde convertimos ideas en productos digitales reales.",
     statusKey: "projects.p5.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -59,7 +76,7 @@ const projects = [
     nameKey: "projects.p1.name",
     nameDefault: "Churrascas Las Delicias 101",
     descKey: "projects.p1.desc",
-    descDefault: "Landing de pedidos para Churrascas Las Delicias 101. Muestra productos y deriva compras directo por WhatsApp.",
+    descDefault: "Negocio familiar de Rengo. Les construí la identidad digital completa para que sus clientes pidan sin intermediarios.",
     statusKey: "projects.p1.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -73,7 +90,7 @@ const projects = [
     nameKey: "projects.p4.name",
     nameDefault: "Peluquería Don Omar",
     descKey: "projects.p4.desc",
-    descDefault: "Landing para Peluquería Don Omar. Presenta servicios, ubicación y reservas directas por WhatsApp.",
+    descDefault: "Más de 50 años cortando en Rengo. Les dimos presencia digital sin perder la esencia del barrio.",
     statusKey: "projects.p4.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -87,7 +104,7 @@ const projects = [
     nameKey: "projects.p6.name",
     nameDefault: "Radio Auténtica",
     descKey: "projects.p6.desc",
-    descDefault: "Plataforma web para Radio Auténtica. Streaming en vivo con integración Icecast y gestión en AzuraCast.",
+    descDefault: "Radio local con historia. Ahora transmite en vivo 24/7 desde cualquier celular, en cualquier parte del mundo.",
     statusKey: "projects.p6.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -99,12 +116,12 @@ const projects = [
   },
 ];
 
-const hiddenProjects = [
+const hiddenProjects: Project[] = [
   {
     nameKey: "projects.p7.name",
     nameDefault: "Proyecto Zátira",
     descKey: "projects.p7.desc",
-    descDefault: "Landing experimental para Zátira, productora de eventos electrónicos. Estética glitch, animaciones 3D y microinteracciones de inspiración nocturna.",
+    descDefault: "Productora de eventos electrónicos. Una web que se siente como entrar al evento antes de que empiece.",
     statusKey: "projects.p7.status",
     statusDefault: "Producción",
     statusType: "production" as const,
@@ -118,13 +135,13 @@ const hiddenProjects = [
     nameKey: "projects.p2.name",
     nameDefault: "GreenGuardian",
     descKey: "projects.p2.desc",
-    descDefault: "Proyecto académico de visión computacional para GreenGuardian. Una CNN detecta enfermedades en plantas desde imágenes en tiempo real.",
+    descDefault: "Tesis de titulación USM. Sistema que detecta enfermedades en plantas desde fotos usando inteligencia artificial.",
     statusKey: "projects.p2.status",
     statusDefault: "Tesis de Titulación",
     statusType: "academic" as const,
     url: "https://www.linkedin.com/in/duvan-apiolaza/overlay/Education/1180212253/treasury/?profileId=ACoAAC-jBCYBwEG9AgcY1a8lqtpmrhE753jByqU",
     urlLabel: "linkedin.com · Tesis USM",
-    image: "/og.png",
+    image: "/projects/greenguardian.jpg",
     techs: ["Python", "TensorFlow", "CNN", "OpenCV", "Keras"],
     featured: false,
   },
@@ -158,7 +175,7 @@ const hiddenProjects = [
 
     <!-- Projects Grid -->
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {projects.map((project, index) => (
+      {projects.map((project: Project, index) => (
         <div
           data-animate
           data-animation="fade-in-up"
@@ -278,7 +295,7 @@ const hiddenProjects = [
     <!-- Hidden / Extra Projects -->
     <div id="more-projects-grid" class="overflow-hidden transition-[max-height] duration-500 ease-in-out" style="max-height: 0;">
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-5">
-        {hiddenProjects.map((project, index) => (
+        {hiddenProjects.map((project: Project, index) => (
           <div
             data-animate
             data-animation="fade-in-up"
@@ -366,17 +383,6 @@ const hiddenProjects = [
           </div>
         ))}
       </div>
-    </div>
-
-    <!-- In Development Notice -->
-    <div class="mt-10 flex items-center justify-center gap-3 text-slate-500 text-sm">
-      <span class="flex items-center gap-2">
-        <span class="relative flex h-2 w-2">
-          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-amber-400 opacity-75"></span>
-          <span class="relative inline-flex rounded-full h-2 w-2 bg-amber-500"></span>
-        </span>
-        <span class="text-slate-400" data-i18n="projects.inDev">1 proyecto en etapa de validación</span>
-      </span>
     </div>
 
     <!-- Narrative bridge -->
