@@ -12,6 +12,7 @@ interface Project {
   url: string;
   urlLabel: string;
   image: string;
+  imagePosition?: string;
   techs: string[];
   featured: boolean;
 }
@@ -118,6 +119,21 @@ const projects: Project[] = [
 
 const hiddenProjects: Project[] = [
   {
+    nameKey: "projects.p8.name",
+    nameDefault: "Urde",
+    descKey: "projects.p8.desc",
+    descDefault: "Consultora boutique chilena. Ayudan a instituciones públicas y universidades a tomar mejores decisiones.",
+    statusKey: "projects.p8.status",
+    statusDefault: "Producción",
+    statusType: "production" as const,
+    url: "https://urde.cl",
+    urlLabel: "urde.cl",
+    image: "/projects/urde.jpg",
+    imagePosition: "left top",
+    techs: ["Astro", "Tailwind CSS", "Vercel"],
+    featured: false,
+  },
+  {
     nameKey: "projects.p7.name",
     nameDefault: "Proyecto Zátira",
     descKey: "projects.p7.desc",
@@ -180,7 +196,6 @@ const hiddenProjects: Project[] = [
           data-animate
           data-animation="fade-in-up"
           class:list={["opacity-0 h-full", project.featured && "md:col-span-2 lg:col-span-2"]}
-          style={`animation-delay: ${(index + 1) * 100}ms;`}
         >
           <a
             href={project.url}
@@ -209,15 +224,15 @@ const hiddenProjects: Project[] = [
             <!-- Project Hero / Screenshot -->
             <div
               class:list={[
-                "relative overflow-hidden flex-1",
-                project.featured ? "min-h-[16rem] md:min-h-[20rem]" : "min-h-[12rem]"
+                "relative overflow-hidden shrink-0",
+                project.featured ? "h-[20rem]" : "h-[12rem]"
               ]}
             >
               <img
                 src={project.image}
                 alt={project.nameDefault}
-                class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
-                loading={index === 0 ? "eager" : "lazy"}
+                class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                style={project.imagePosition ? `object-position: ${project.imagePosition}` : 'object-position: top'}
               />
               <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
 
@@ -245,7 +260,7 @@ const hiddenProjects: Project[] = [
             </div>
 
             <!-- Content -->
-            <div class="p-5">
+            <div class="p-5 flex flex-col flex-1">
               <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300" data-i18n={project.nameKey}>
                 {project.nameDefault}
               </h3>
@@ -254,7 +269,7 @@ const hiddenProjects: Project[] = [
               </p>
 
               <!-- Tech Stack -->
-              <div class="flex flex-wrap gap-2">
+              <div class="flex flex-wrap gap-2 mt-auto">
                 {project.techs.map((tech) => {
                   const t = techIcons[tech];
                   return (
@@ -300,7 +315,6 @@ const hiddenProjects: Project[] = [
             data-animate
             data-animation="fade-in-up"
             class="opacity-0 h-full"
-            style={`animation-delay: ${(index + 1) * 100}ms;`}
           >
             <a
               href={project.url}
@@ -324,11 +338,12 @@ const hiddenProjects: Project[] = [
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                 </svg>
               </div>
-              <div class="relative overflow-hidden flex-1 min-h-[12rem]">
+              <div class="relative overflow-hidden shrink-0 h-[12rem]">
                 <img
                   src={project.image}
                   alt={project.nameDefault}
-                  class="absolute inset-0 w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                  class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                  style={project.imagePosition ? `object-position: ${project.imagePosition}` : 'object-position: top'}
                   loading="lazy"
                 />
                 <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-slate-950/20 to-transparent"></div>
@@ -353,14 +368,14 @@ const hiddenProjects: Project[] = [
                   )}
                 </div>
               </div>
-              <div class="p-5">
+              <div class="p-5 flex flex-col flex-1">
                 <h3 class="text-lg font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors duration-300" data-i18n={project.nameKey}>
                   {project.nameDefault}
                 </h3>
                 <p class="text-slate-400 text-sm leading-relaxed mb-4" data-i18n={project.descKey}>
                   {project.descDefault}
                 </p>
-                <div class="flex flex-wrap gap-2">
+                <div class="flex flex-wrap gap-2 mt-auto">
                   {project.techs.map((tech) => {
                     const t = techIcons[tech];
                     return (

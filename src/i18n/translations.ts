@@ -1,5 +1,11 @@
 export const translations = {
   es: {
+    // Nav
+    "nav.services": "Servicios",
+    "nav.projects": "Portafolio",
+    "nav.process": "Metodología",
+    "nav.contact": "Contacto",
+
     // Hero
     "hero.title": "Webs que ayudan a tu negocio a crecer",
     "hero.value2": "Diseño y desarrollo sitios web para negocios que necesitan más que solo presencia online. Trabajo remoto desde Chile.",
@@ -97,6 +103,12 @@ export const translations = {
   },
 
   en: {
+    // Nav
+    "nav.services": "Services",
+    "nav.projects": "Portfolio",
+    "nav.process": "Methodology",
+    "nav.contact": "Contact",
+
     // Hero
     "hero.title": "Webs that help your business grow",
     "hero.value2": "I design and build websites for businesses that need more than just an online presence. Working remotely from Chile.",
